@@ -1,9 +1,10 @@
 module.exports = {
-  
+
   friendlyName: 'Whats Around Me',
   description: 'Bing Spatial Data Service: collects all entities around a specified geo location',
   extendedDescription: 'This calls bing spatial data service as an observable, and uses Rx to subscribe to the response of nearby entities',
   defaultExit: 'success',
+
   inputs: {
     apiKey: {
         example: '232edfdnfddf4450',
@@ -63,6 +64,14 @@ module.exports = {
   },
 
   fn: function (input,exits){
+      String.prototype.format = function() {
+        var formatted = this;
+        for( var arg in arguments ) {
+            formatted = formatted.replace("{" + arg + "}", arguments[arg]);
+        }
+        return formatted;
+      };
+
       var Rx = require('rx');
       var RxDOM = require('rx-dom');
 
@@ -108,12 +117,4 @@ module.exports = {
       );
     
   },
-};
-
-String.prototype.format = function() {
-    var formatted = this;
-    for( var arg in arguments ) {
-        formatted = formatted.replace("{" + arg + "}", arguments[arg]);
-    }
-    return formatted;
 };

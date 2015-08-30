@@ -1,6 +1,6 @@
 {
   "name": "machinepack-rxbingservices",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "repository": "erikschlegel/machinepack-rxbingservices",
   "description": "Reactive extensions for Bing location and mapping services",
   "scripts": {
