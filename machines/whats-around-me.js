@@ -1,10 +1,12 @@
 var Rx = require('rx');
+var RxDOM = require('rx-dom');
+
 var serviceUrl = 'https://spatial.virtualearth.net/REST/v1/data/f22876ec257b474b82fe2ffcb8393150';
 var bingDSDefault = 'NAVTEQNA';
 var bingPOIDefault = 'NavteqPOIs';
 
 module.exports = {
-  friendlyName: 'whatsaroundme',
+  friendlyName: 'Whats Around Me',
   description: 'Bing Spatial Data Service: collects all entities around a specified geo location',
   extendedDescription: 'This calls bing spatial data service as an observable, and uses Rx to subscribe to the response of nearby entities',
   cacheable: false,
@@ -35,9 +37,9 @@ module.exports = {
         example: 'NavteqPOIs',
         description: 'The point of interest name',
         required: false
-    }
+    },
     filter: {
-        example: 'StartsWith(PrimaryCity,''Clear'') eq true',
+        example: 'StartsWith(PrimaryCity, Clear) eq true',
         description: 'The Odata filter for the bing spatial data query',
         required: false
     },
@@ -69,11 +71,14 @@ module.exports = {
     }
   },
 
-
-  fn: function (inputs,exits)
+  fn: function (input,exits)
   /*The main function which Creates an observable Http request 
      out to Bing*/{
-      if(!validate(inputs))
+      var validate = function(){
+           return(input.location.split(',').length == 2);
+      }
+
+      if(!validate(input))
         return exits.error({description: 'request failed validation check'});
 
       var coords = input.location.split(',');
@@ -90,7 +95,7 @@ module.exports = {
                                               input.apiKey, spatialFilter, select, top, filter,
                                               order);
 
-      Rx.DOM.jsonpRequest(BingURL)
+      RxDOM.jsonpRequest(BingURL)
       .subscribe(
         function (response) {
           var bingResponse = {};
@@ -107,12 +112,6 @@ module.exports = {
       );
     
   },
-
-  validate: function(input){
-      return(input.location.split(',').length == 2);
-  }
-
-
 };
 
 String.prototype.format = function() {
