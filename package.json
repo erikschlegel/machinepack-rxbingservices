@@ -1,6 +1,6 @@
 {
   "name": "machinepack-rxbingservices",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "repository": "erikschlegel/machinepack-rxbingservices",
   "description": "Reactive extensions for Bing location and mapping services",
   "scripts": {
@@ -27,8 +27,8 @@
     "grunt": "^0.4.5",
     "grunt-browserify": "^4.0.0",
     "grunt-cli": "^0.1.13",
-    "rx" : "*",
-    "rx-dom" : "*"
+    "rx": "*",
+    "rx-dom": "*"
   },
   "devDependencies": {
     "test-machinepack-mocha": "^2.0.0"

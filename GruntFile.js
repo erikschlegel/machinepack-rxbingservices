@@ -5,7 +5,7 @@ module.exports = function (grunt) {
         browserify: {
             example: {
                 src: './examples/SpatialDataEx.js',
-                dest: './SpatialDataEx.js',
+                dest: './SpatialDataExOut.js',
                 options: {
                     debug: true,
                     extensions: ['.js'],

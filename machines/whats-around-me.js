@@ -1,17 +1,9 @@
-var Rx = require('rx');
-var RxDOM = require('rx-dom');
-
-var serviceUrl = 'https://spatial.virtualearth.net/REST/v1/data/f22876ec257b474b82fe2ffcb8393150';
-var bingDSDefault = 'NAVTEQNA';
-var bingPOIDefault = 'NavteqPOIs';
-
 module.exports = {
+  
   friendlyName: 'Whats Around Me',
   description: 'Bing Spatial Data Service: collects all entities around a specified geo location',
   extendedDescription: 'This calls bing spatial data service as an observable, and uses Rx to subscribe to the response of nearby entities',
-  cacheable: false,
-  sync: false,
-  idempotent: false,
+  defaultExit: 'success',
   inputs: {
     apiKey: {
         example: '232edfdnfddf4450',
@@ -60,7 +52,6 @@ module.exports = {
     }
   },
 
-
   exits: {
     success: {
       variableName: 'result',
@@ -71,9 +62,14 @@ module.exports = {
     }
   },
 
-  fn: function (input,exits)
-  /*The main function which Creates an observable Http request 
-     out to Bing*/{
+  fn: function (input,exits){
+      var Rx = require('rx');
+      var RxDOM = require('rx-dom');
+
+      var serviceUrl = 'https://spatial.virtualearth.net/REST/v1/data/f22876ec257b474b82fe2ffcb8393150';
+      var bingDSDefault = 'NAVTEQNA';
+      var bingPOIDefault = 'NavteqPOIs';
+
       var validate = function(){
            return(input.location.split(',').length == 2);
       }

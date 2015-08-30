@@ -1,4 +1,4 @@
-var BingServices = require('../');
+var BingServices = require('.');
 
 // Fetch the west village surroundings
 BingServices.whatsAroundMe({
@@ -9,7 +9,7 @@ BingServices.whatsAroundMe({
 }).exec({
   // An unexpected error occurred.
   error: function (e){
-  	console.log('Received an error:\n', e);
+    console.log('Received an error:\n', e);
   },
   // OK.
   success: function (result){
