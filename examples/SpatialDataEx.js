@@ -2,7 +2,7 @@ var BingServices = require('../');
 
 // Fetch the west village surroundings
 BingServices.whatsAroundMe({
-  apiKey: 'Aji7ARlyYm81OWlGyWxr8DCdPFhUtbYyAYq1LcAKgFoYh1Q6Dx5Sqvybk8qVTtir',
+  apiKey: 'x',
   location: '40.735803,-74.001374',
   top: 20,
   radius: 1
