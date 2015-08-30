@@ -1,0 +1,38 @@
+{
+  "name": "machinepack-rxbingservices",
+  "version": "0.1.0",
+  "repository": "erikschlegel/machinepack-rxbingservices",
+  "description": "Reactive extensions for Bing location and mapping services",
+  "scripts": {
+    "test": "node ./node_modules/test-machinepack-mocha/bin/testmachinepack-mocha.js"
+  },
+  "maintainers": [
+    {
+      "name": "Erik Schlegel",
+      "email": "erik.schlegel@gmail.com",
+      "web": "erikschlegel.com"
+    }
+  ],
+  "keywords": [
+    "RxBingServices",
+    "machines",
+    "machinepack"
+  ],
+  "author": "Erik Schlegel",
+  "license": "MIT",
+  "dependencies": {
+    "machine": "^9.0.0",
+    "rx" : "*"
+  },
+  "devDependencies": {
+    "test-machinepack-mocha": "^2.0.0"
+  },
+  "machinepack": {
+    "friendlyName": "RxBingServices",
+    "machineDir": "machines/",
+    "machines": [
+      "say-hello",
+      "whatsaroundme"
+    ]
+  }
+}
